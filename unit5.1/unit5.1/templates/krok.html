@@ -1,32 +1,8 @@
 <!-- extend base layout -->
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-<style>
-body, html {
-  height: 100%;
-  font-family: "Inconsolata", sans-serif;
-}
-
-.menu {
-  display: none;
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-</style>
 <div class="page-header">
-  <h1>Rekrutacja krok po kroku</h1>
-  
-  
+    <h1>Rekrutacja krok po kroku</h1>
 </div>
 <br>
 
@@ -35,53 +11,54 @@ body, html {
 <!-- Add a background color and large text to the whole page -->
 <div class="w3-sand w3-grayscale w3-large">
 
-<!-- About Container -->
-<br>
-<img src="https://gfx.zdrowie.radiozet.pl/var/radiozetzdrowie/storage/images/ciaza-i-dziecko/zdrowie-dziecka/co-atakuje-dzieci-w-zlobkach-i-przedszkolach-choroby-ktorymi-dzieci-zarazaja-sie-najczesciej/338479-9-pol-PL/Co-atakuje-dzieci-w-zlobkach-i-przedszkolach-Choroby-ktorymi-dzieci-zarazaja-sie-najczesciej_article.webp"  style="width:822px;height:462px;" alt="dzieci.jpg" class="center">
-<div class="w3-container" id="about">
-
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Kim jesteśmy?</span></h5>
-    
-    <p>A kogo to w ogóle interesuje. Kim jesteś, królową angielską, że musisz wszystko wiedzieć? lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <!-- About Container -->
     <br>
-    <div class="w3-panel w3-leftbar w3-light-grey">
-      
-      <p><i>„Żyj tak, jakbyś miał umrzeć jutro. Ucz się tak, jakbyś miał żyć wiecznie.”</i></p>
-      <p>– Gandhi Mahatma</p>
+    <img src="https://gfx.zdrowie.radiozet.pl/var/radiozetzdrowie/storage/images/ciaza-i-dziecko/zdrowie-dziecka/co-atakuje-dzieci-w-zlobkach-i-przedszkolach-choroby-ktorymi-dzieci-zarazaja-sie-najczesciej/338479-9-pol-PL/Co-atakuje-dzieci-w-zlobkach-i-przedszkolach-Choroby-ktorymi-dzieci-zarazaja-sie-najczesciej_article.webp"
+        style="width:822px;height:462px;" alt="dzieci.jpg" class="center">
+    <div class="w3-container" id="about">
+
+        <div class="w3-content" style="max-width:700px">
+            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Kim jesteśmy?</span></h5>
+
+            <p>A kogo to w ogóle interesuje. Kim jesteś, królową angielską, że musisz wszystko wiedzieć? lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <br>
+            <div class="w3-panel w3-leftbar w3-light-grey">
+
+                <p><i>„Żyj tak, jakbyś miał umrzeć jutro. Ucz się tak, jakbyś miał żyć wiecznie.”</i></p>
+                <p>– Gandhi Mahatma</p>
+            </div>
+            <br>
+
+            <p><strong>Wypełnij formularz do:</strong> jak najszybciej, bo zaliczenie przepadnie</p>
+            <p><strong>Więcej informacji pod numerem telefonu:</strong> 0 700</p>
+        </div>
     </div>
-    <br>
 
-    <p><strong>Wypełnij formularz do:</strong> jak najszybciej, bo zaliczenie przepadnie</p>
-    <p><strong>Więcej informacji pod numerem telefonu:</strong> 0 700</p>
-  </div>
-</div>
+    <!-- Menu Container -->
+    <div class="w3-container" id="menu">
+        <div class="w3-content" style="max-width:700px">
 
-<!-- Menu Container -->
-<div class="w3-container" id="menu">
-  <div class="w3-content" style="max-width:700px">
- 
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WYPEŁNIJ FORMULARZ WARIACIE</span></h5>
-    <p>Formularz znajdziesz pod tym linkiem:  <a href="#">link</a>. A jak nie znajdziesz to spójrz na pasek miernoto. </p>
-
-    
-
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where" style="padding-bottom:32px;">
-  <div class="w3-content" style="max-width:700px">
-    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">MASZ WĄTPLIWOŚCI?</span></h5>
-    <p>O wszystko co Cię trapi możesz zapytać nas bezpośrednio przez poniższy formularz.</p>
-    <form action="/action_page.php" target="_blank">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Imię" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Wpisz swoje zapytanie" required name="Message"></p>
-      <p><button class="w3-button w3-black" type="submit">Wyślij pytanie</button></p>
-    </form>
-  </div>
-</div>
-
-<!-- End page content -->
-</div>
+            <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">WYPEŁNIJ FORMULARZ WARIACIE</span></h5>
+            <p>Formularz znajdziesz pod tym linkiem: <a href="#">link</a>. A jak nie znajdziesz to spójrz na pasek miernoto. </p>
 
 
-{% endblock %}
 
+            <!-- Contact/Area Container -->
+            <div class="w3-container" id="where" style="padding-bottom:32px;">
+                <div class="w3-content" style="max-width:700px">
+                    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">MASZ WĄTPLIWOŚCI?</span></h5>
+                    <p>O wszystko co Cię trapi możesz zapytać nas bezpośrednio przez poniższy formularz.</p>
+                    <form action="/action_page.php" target="_blank">
+                        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Imię" required name="Name"></p>
+                        <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Wpisz swoje zapytanie" required name="Message"></p>
+                        <p><button class="w3-button w3-black" type="submit">Wyślij pytanie</button></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- End page content -->
+        </div>
+
+
+        {% endblock %}
