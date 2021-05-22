@@ -1,0 +1,140 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Formularz zgłoszeniowy</h1>
+</div>
+<br>
+
+<form role="form" action="/save" method="post">
+    <h3>Dane osobowe</h3>
+    <div class="form-group">
+        <label for="firstname">Imię:</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" required>
+        <option value="" disabled selected hidden>Choose Gender...</option>
+    </div>
+    <div class="form-group">
+        <label for="lastname">Nazwisko:</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="date">Data urodzenia:</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="sex">Płeć:</label>
+      <select class="form-control" id="sex" name="sex">
+      <option value="" disabled selected hidden>Wybierz płeć...</option>
+        <option>Kobieta</option>
+        <option>Mężczyzna</option>
+        <option>Inna</option>
+        <option>Wolę nie odpowiadać</option>
+      </select>
+    </div>
+<br>
+
+    <h3>Dane kontaktowe</h3>
+    <div class="form-group">
+        <label for="email">Adres e-mail:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Numer telefonu:</label>
+        <input type="text" class="form-control" id="phone" name="phone" required>
+    </div>
+    
+  <br>  
+    <h3>Wykształcenie</h3>
+    <div class="form-group">
+      <label for="ed">Poziom wykształcenia:</label>
+      <select class="form-control" id="ed" name="ed">
+        <option>Podstawowe</option>
+        <option>Gimnazjalne</option>
+        <option>Zasadnicze zawodowe</option>
+        <option>Średnie</option>
+        <option>Wyższe I-ego stopnia</option>
+        <option>Wyższe II-ego stopnia</option>
+        <option>Wyższe III-ego stopnia</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="ed">Obszar tematyczny kierunku studiów:</label>
+      <select class="form-control" id="ed" name="ed">
+        <option>Administracyjne</option>
+        <option>Artystyczne</option>
+        <option>Biologiczno-przyrodnicze</option>
+        <option>Ekonomiczne</option>
+        <option>Humanistyczne</option>
+        <option>Filologiczne</option>
+        <option>Medyczne</option>
+        <option>Pedagogiczne</option>
+        <option>Prawnicze</option>
+        <option>Psychologiczne</option>
+        <option>Społeczne</option>
+        <option>Techniczne</option>
+        <option>Turystyczno-sportowe</option>
+        <option>Wojskowe i morskie</option>
+      </select>
+    </div>
+
+      <div class="form-group">
+        <label for="ed">Uczelnia:</label>
+        <select class="form-control" id="ed" name="ed">
+          <option>Uniwersytet Jagielloński tfu</option>
+        </select>
+      </div>
+<br>
+      <h3>Informacje dodatkowe</h3>
+
+    <div>
+      <label for="work">Zaświadczenia: <br></label>
+      <br>
+      <input type="checkbox" id="sstate" name="sstate"
+            unchecked>
+            
+      <label for="sstatus">Status studenta <br></label>
+      <br>
+      <input type="checkbox" id="disab" name="disab"
+            unchecked>
+      <label for="disab">Zaświadczenie o niepełnosprawności <br></label>
+      <br>
+      <input type="checkbox" id="crime" name="crime"
+            unchecked>
+      <label for="crime">Zaświadczenie o niekaralności <br></label>
+      
+    </div>
+
+    <br>
+    
+    <div class="form-group">
+      <label for="work">Sytuacja zawodowa:</label>
+      <select class="form-control" id="work" name="work">
+        <option>Bezrobotny</option>
+        <option>Uczeń/student</option>
+        <option>Emeryt/rencista</option>
+        <option>Średnie</option>
+      </select>
+    </div>
+ <br>
+    <h3>Zgoda na przetwarzanie danych osobowych</h3>
+    <div>
+      <label for="disab" style="text-align: justify"><input type="checkbox" id="rodo" name="rodo"
+            unchecked>
+      Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb
+niezbędnych do realizacji procesu rekrutacji zgodnie z Rozporządzeniem
+Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r.
+w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych
+osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia
+dyrektywy 95/46/WE (RODO).</label>
+    </div>
+<br>
+  <button type="submit" class="btn btn-primary" style="float: right;">Prześlij formularz</button>
+</form>
+{% endblock %}
+
