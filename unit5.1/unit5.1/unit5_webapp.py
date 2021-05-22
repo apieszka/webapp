@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import statistics
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///formdata.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
@@ -51,6 +51,10 @@ def show_raw():
     fd = db.session.query(Formdata).all()
     return render_template('raw.html', formdata=fd)
 
+@app.route("/faq")
+def show_faq():
+    fd = db.session.query(Formdata).all()
+    return render_template('faq.html')
 
 @app.route("/result")
 def show_result():
