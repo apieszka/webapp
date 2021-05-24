@@ -26,11 +26,11 @@ h1 {
     transition: transform .3s;
 }
 
-.cd-faq__item,
+/* .cd-faq__item,
 span {
     font-weight: bold;
     font-size: larger;
-}
+} */
 
 .cd-faq__items--slide-in {
     transform: translateX(0);

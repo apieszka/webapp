@@ -53,7 +53,7 @@ def show_raw():
 
 @app.route("/faq")
 def show_faq():
-    fd = db.session.query(Formdata).all()
+    # fd = db.session.query(Formdata).all()
     return render_template('faq.html')
 
 @app.route("/result")
