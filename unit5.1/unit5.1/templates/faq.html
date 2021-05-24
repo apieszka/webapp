@@ -1,45 +1,20 @@
-<!-- extend base layout -->
 {% extends "base.html" %} {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="page-header">
     <h1>Najczęściej zadawane pytania</h1>
 </div>
-<br>
+</br>
 
-<section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg">
+<section>
+    <ol>
+        <li style="font-weight: bold; font-size: x-large">Kto może wziąć udział w programie?</li>
+        <p style="font-weight: normal; font-size: large">Każdy!</p>
+                
+        <li style="font-weight: bold; font-size: x-large">Jak się zarekrutować?</li>
+        <p style="font-weight: normal; font-size: large">Klinknij przycisk wypełnij formularz na stronie głównej lub...</p>
 
-    <div class="cd-faq__items">
-        <ol id="recruitment" class="cd-faq__group">
-
-            <li class="cd-faq__item" style="font-weight: bold; font-size: larger">
-                <a class="cd-faq__trigger" href="#0"><span style="font-weight: bold; font-size: larger">Kto może wziąć udział w programie?</span></a>
-                <div class="cd-faq__content">
-                    <div class="text-component">
-                        <p style="font-weight: normal; font-size: large">Każdy!</p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="cd-faq__item" style="font-weight: bold; font-size: larger">
-                <a class="cd-faq__trigger" href="#1"><span style="font-weight: bold; font-size: larger">Jak się zarekrutować?</span></a></br>
-                <div class="cd-faq__content">
-                    <div class="text-component">
-                        <p style="font-weight: normal; font-size: large">Klinknij przycisk wypełnij formularz na stronie głównej lub...</p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="cd-faq__item" style="font-weight: bold; font-size: larger">
-                <a class="cd-faq__trigger" href="#2"><span style="font-weight: bold; font-size: larger">Jakieś pytania?</span></a></br>
-                <div class="cd-faq__content">
-                    <div class="text-component">
-                        <p style="font-weight: normal; font-size: large">Nope.</p>
-                    </div>
-                </div>
-            </li>
-
-        </ol>
-    </div>
+        <li style="font-weight: bold; font-size: x-large">Jakieś pytania?</li>
+        <p style="font-weight: normal; font-size: large">Nope.</p>
+    </ol>
 </section>
-<!-- cd-faq -->
 {% endblock content %}
