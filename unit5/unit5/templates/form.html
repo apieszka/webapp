@@ -6,8 +6,8 @@
 <br>
 
 <form role="form" action="/save" method="post">
-    <!--<h3>Dane osobowe</h3>
-    <div class="form-group">
+    <h3>Dane osobowe</h3>
+    <!-- <div class="form-group">
         <label for="firstname">Imię:</label>
         <input type="text" class="form-control" id="firstname" name="firstname" required> 
         <option value="" disabled selected hidden>Choose Gender...</option>
@@ -15,23 +15,53 @@
     <div class="form-group">
         <label for="lastname">Nazwisko:</label>
         <input type="text" class="form-control" id="lastname" name="lastname" required>
-    </div> 
+    </div> -->
 
     <div class="form-group">
-        <label for="date">Data urodzenia:</label>
-        <input type="date" class="form-control" id="date" name="date" required>
-    </div>-->
+        <label for="date">Wiek:</label>
+        <select class="form-control" id="wiek" name="wiek">
+            <option value="" disabled selected hidden>Wybierz swoją grupę wiekową...</option>
+            <option>mniej niż 18</option>
+            <option>18-21</option>
+            <option>22-25</option>
+            <option>26-35</option>
+            <option>35-60</option>
+            <option>60+</option>
+        </select>
+    </div>
 
     <div class="form-group">
         <label for="sex">Płeć:</label>
         <select class="form-control" id="sex" name="sex">
-      <option value="" disabled selected hidden>Wybierz płeć...</option>
+        <option value="" disabled selected hidden>Wybierz płeć...</option>
         <option>Kobieta</option>
         <option>Mężczyzna</option>
         <option>Inna</option>
         <option>Wolę nie odpowiadać</option>
       </select>
     </div>
+    
+    <div class="form-group">
+        <label for="woj">Województwo:</label>
+        <select class="form-control" id="woj"name="woj">
+            <option value="1">Dolnośląskie</option>
+            <option value="2">Kujawsko-Pomorskie</option>
+            <option value="3">Lubelskie</option>
+            <option value="4">Lubuskie</option>
+            <option value="5">Łódzkie</option>
+            <option value="6">Małopolskie</option>
+            <option value="7">Mazowieckie</option>
+            <option value="8">Opolskie</option>
+            <option value="9">Podkarpackie</option>
+            <option value="10">Podlaskie</option>
+            <option value="11">Pomorskie</option>
+            <option value="12">Śląskie</option>
+            <option value="13">Świętokrzyskie</option>
+            <option value="14">Warmińsko-Mazurskie</option>
+            <option value="15">Wielkopolskie</option>
+            <option value="16">Zachodniopomorskie</option>
+        </select>
+     </div>
     <br>
 
     <h3>Dane kontaktowe</h3>
@@ -40,56 +70,119 @@
         <input type="email" class="form-control" id="email" name="email" required>
     </div>
 
-    <!--<div class="form-group">
+    <!-- <div class="form-group">
         <label for="phone">Numer telefonu:</label>
         <input type="text" class="form-control" id="phone" name="phone" required>
-    </div>-->
+    </div> -->
+
+    <script language="javascript">
+        function EdSelectCheck(nameSelect)
+        {
+            console.log(nameSelect);
+            if(nameSelect){
+                wyzsze1Value = document.getElementById("wyzsze1").value;
+                wyzsze2Value = document.getElementById("wyzsze2").value;
+                wyzsze3Value = document.getElementById("wyzsze3").value;
+                if(wyzsze1Value == nameSelect.value || wyzsze2Value == nameSelect.value || wyzsze3Value == nameSelect.value){
+                    document.getElementById("DivCheck").style.display = "block";
+                }
+                else{
+                    document.getElementById("DivCheck").style.display = "none";
+                }
+            }
+            else{
+                document.getElementById("DivCheck").style.display = "none";
+            }
+        }
+
+        function UczelniaSelectCheck(nameSelect)
+        {
+            console.log(nameSelect);
+            if(nameSelect){
+                uczelniaValue = document.getElementById("uczelnia").value;
+                if(uczelniaValue == nameSelect.value){
+                    document.getElementById("UczelniaDivCheck").style.display = "block";
+                }
+                else{
+                    document.getElementById("UczelniaDivCheck").style.display = "none";
+                }
+            }
+            else{
+                document.getElementById("UczelniaDivCheck").style.display = "none";
+            }
+        }
+    </script>
 
     <br>
     <h3>Wykształcenie</h3>
     <div class="form-group">
         <label for="ed">Poziom wykształcenia:</label>
-        <select class="form-control" id="ed" name="ed">
+        <select class="form-control" id="ed" name="ed" onchange="EdSelectCheck(this);">
         <option>Podstawowe</option>
         <option>Gimnazjalne</option>
         <option>Zasadnicze zawodowe</option>
         <option>Średnie</option>
-        <option>Wyższe I-ego stopnia</option>
-        <option>Wyższe II-ego stopnia</option>
-        <option>Wyższe III-ego stopnia</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-        <label for="ed">Obszar tematyczny kierunku studiów:</label>
-        <select class="form-control" id="ed" name="ed">
-        <option>Administracyjne</option>
-        <option>Artystyczne</option>
-        <option>Biologiczno-przyrodnicze</option>
-        <option>Ekonomiczne</option>
-        <option>Humanistyczne</option>
-        <option>Filologiczne</option>
-        <option>Medyczne</option>
-        <option>Pedagogiczne</option>
-        <option>Prawnicze</option>
-        <option>Psychologiczne</option>
-        <option>Społeczne</option>
-        <option>Techniczne</option>
-        <option>Turystyczno-sportowe</option>
-        <option>Wojskowe i morskie</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-        <label for="ed">Uczelnia:</label>
-        <select class="form-control" id="ed" name="ed">
-          <option>Uniwersytet Jagielloński</option>
+        <option id="wyzsze1" value="1">Wyższe I-ego stopnia</option>
+        <option id="wyzsze2" value="2">Wyższe II-ego stopnia</option>
+        <option id="wyzsze3" value="3">Wyższe III-ego stopnia</option>
         </select>
+    </div>
+
+    <div id="DivCheck" style= "display:none;">
+        <div class="form-group">
+            <label for="ed">Uczelnia:</label>
+            <select class="form-control" id="ed" name="ed" onchange="UczelniaSelectCheck(this);">
+            <option>Uniwersytet Pedagogiczny im. Komisji Edukacji w Krakowie</option>
+            <option>Szkoła Główna Gospodarstwa Wiejskiego w Warszawie</option>
+            <option>Uniwersytet Jagielloński w Krakowie</option>
+            <option>Uniwersytet Marii Curie-Skłodowskiej w Lublinie</option>
+            <option>Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie</option>
+            <option>Uniwersytet Papieski Jana Pawła II w Krakowie</option>
+            <option>Społeczna Akademia Nauk w Łodzi</option>
+            <option>Uniwersytet Warszawski</option>
+            <option>Uniwersytet im. Adama Mickiewicza w Poznaniu</option>
+            <option>Akademia WSB w Dąbrowie Górniczej</option>
+            <option>Uniwersytet Śląski w Katowicach</option>
+            <option>Uniwersytet Gdański</option>
+            <option>Uniwersytet Łódzki</option>
+            <option>Politechnika Krakowska</option>
+            <option>Uniwersytet Rolniczy w Krakowie</option>
+            <option>Akademia Ignatianum w Krakowie</option>
+            <option>Uniwersytet Opolski</option>
+            <option>Uniwersytet Ekonomiczny w Krakowie</option>
+            <option>Uniwersytet Medyczny w Łodzi</option>
+            <option id="uczelnia" value="1">Inne</option>
+        </select>
+        </div>
+    </div>
+
+    <div id="UczelniaDivCheck" style= "display:none;">
+        <div class="form-group">
+            <label for="ed">Obszar tematyczny kierunku studiów:</label>
+            <select class="form-control" id="ed" name="ed">
+            <option>Administracyjne</option>
+            <option>Artystyczne</option>
+            <option>Biologiczno-przyrodnicze</option>
+            <option>Ekonomiczne</option>
+            <option>Humanistyczne</option>
+            <option>Filologiczne</option>
+            <option>Medyczne</option>
+            <option>Pedagogiczne</option>
+            <option>Prawnicze</option>
+            <option>Psychologiczne</option>
+            <option>Społeczne</option>
+            <option>Techniczne</option>
+            <option>Turystyczno-sportowe</option>
+            <option>Wojskowe i morskie</option>
+        </select><br>
+        <label for="innaUczelnia">Nazwa Uczelni:</label>
+        <input type="text" class="form-control" id="innaUczelnia" name="innaUczelnia" required>
+        </div>
     </div>
     <br>
     <h3>Informacje dodatkowe</h3>
 
-    <div>
+    <!-- <div>
         <label for="work">Zaświadczenia: <br></label>
         <br>
         <input type="checkbox" id="sstate" name="sstate" unchecked>
@@ -104,7 +197,7 @@
 
     </div>
 
-    <br>
+    <br> -->
 
     <div class="form-group">
         <label for="work">Sytuacja zawodowa:</label>
@@ -112,7 +205,6 @@
         <option>Bezrobotny</option>
         <option>Uczeń/student</option>
         <option>Emeryt/rencista</option>
-        <option>Średnie</option>
       </select>
     </div>
     <br>
