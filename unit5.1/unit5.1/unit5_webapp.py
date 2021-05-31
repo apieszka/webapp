@@ -46,10 +46,10 @@ def show_form():
 def show_krok():
     return render_template('krok.html')
 
-@app.route("/raw")
-def show_raw():
-    fd = db.session.query(Formdata).all()
-    return render_template('raw.html', formdata=fd)
+# @app.route("/raw")
+# def show_raw():
+#     fd = db.session.query(Formdata).all()
+#     return render_template('raw.html', formdata=fd)
 
 @app.route("/faq")
 def show_faq():

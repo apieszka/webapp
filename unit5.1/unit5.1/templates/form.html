@@ -1,4 +1,3 @@
-<!-- extend base layout -->
 {% extends "base.html" %} {% block content %}
 
 <div class="page-header">
@@ -7,17 +6,8 @@
 <br>
 
 <form role="form" action="/save" method="post">
-    <h3>Dane osobowe</h3>
-    <!-- <div class="form-group">
-        <label for="firstname">Imię:</label>
-        <input type="text" class="form-control" id="firstname" name="firstname" required>
-        <option value="" disabled selected hidden>Choose Gender...</option>
-    </div>
-    <div class="form-group">
-        <label for="lastname">Nazwisko:</label>
-        <input type="text" class="form-control" id="lastname" name="lastname" required>
-    </div> -->
 
+    <h3>Dane osobowe</h3>
     <div class="form-group">
         <label for="date">Wiek:</label>
         <select class="form-control" id="wiek" name="wiek">
@@ -68,13 +58,8 @@
     <h3>Dane kontaktowe</h3>
     <div class="form-group">
         <label for="email">Adres e-mail:</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email">
     </div>
-
-    <!-- <div class="form-group">
-        <label for="phone">Numer telefonu:</label>
-        <input type="text" class="form-control" id="phone" name="phone" required>
-    </div> -->
 
     <script language="javascript">
         function EdSelectCheck(nameSelect)
@@ -156,7 +141,7 @@
         </select>
         </div>
     </div>
-
+  
     <div id="UczelniaDivCheck" style= "display:none;">
         <div class="form-group">
             <label for="ed">Obszar tematyczny kierunku studiów:</label>
