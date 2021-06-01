@@ -1,13 +1,15 @@
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import os
 import statistics
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ewghomobgjaibb:4377e11b4b8af278c8cf92e44' \
-                                        '2bc6fbe543dd6a6ea002bc2f5703a4d8f15e7f8@ec2-54-155-' \
-                                        '226-153.eu-west-1.compute.amazonaws.com:5432/d6h3qqlm9dtlog'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ewghomobgjaibb:4377e11b4b8af278c8cf92e44' \
+#                                        '2bc6fbe543dd6a6ea002bc2f5703a4d8f15e7f8@ec2-54-155-' \
+#                                        '226-153.eu-west-1.compute.amazonaws.com:5432/d6h3qqlm9dtlog'
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
