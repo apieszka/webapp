@@ -59,7 +59,7 @@ def show_faq():
     return render_template('faq.html')
 
 @app.route("/test")
-def show_form():
+def show_test():
     return render_template('form_test.html')
 
 @app.route("/result")
