@@ -8,3 +8,4 @@ MarkupSafe==2.0.1
 procfile==0.1.0
 Werkzeug==2.0.1
 flask_sqlalchemy==2.5.1
+psycopg2==2.4.4
