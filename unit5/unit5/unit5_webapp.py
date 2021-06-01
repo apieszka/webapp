@@ -101,13 +101,13 @@ def show_result():
 @app.route("/save", methods=['POST'])
 def save():
     # Get data from FORM
-    firstname = request.form_test['firstname']
-    email = request.form_test['email']
-    age = request.form_test['age']
-    income = request.form_test['income']
-    satisfaction = request.form_test['satisfaction']
-    q1 = request.form_test['q1']
-    q2 = request.form_test['q2']
+    firstname = request.form.get('firstname')
+    email = request.form.get('email')
+    age = request.form.get('age')
+    income = request.form.get('income')
+    satisfaction = request.form.get('satisfaction')
+    q1 = request.form.get('q1')
+    q2 = request.form.get('q2')
 
     # Save the data
     fd = Formdata(firstname, email, age, income, satisfaction, q1, q2)
