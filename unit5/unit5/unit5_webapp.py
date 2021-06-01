@@ -5,7 +5,9 @@ import statistics
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///formdata.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ewghomobgjaibb:4377e11b4b8af278c8cf92e44' \
+                                        '2bc6fbe543dd6a6ea002bc2f5703a4d8f15e7f8@ec2-54-155-' \
+                                        '226-153.eu-west-1.compute.amazonaws.com:5432/d6h3qqlm9dtlog'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
@@ -55,6 +57,10 @@ def show_krok():
 def show_faq():
     # fd = db.session.query(Formdata).all()
     return render_template('faq.html')
+
+@app.route("/test")
+def show_form():
+    return render_template('form_test.html')
 
 @app.route("/result")
 def show_result():
