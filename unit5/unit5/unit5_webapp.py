@@ -6,9 +6,6 @@ import statistics
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ewghomobgjaibb:4377e11b4b8af278c8cf92e44' \
-#                                        '2bc6fbe543dd6a6ea002bc2f5703a4d8f15e7f8@ec2-54-155-' \
-#                                        '226-153.eu-west-1.compute.amazonaws.com:5432/d6h3qqlm9dtlog'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
@@ -18,8 +15,8 @@ class Formdata(db.Model):
     __tablename__ = 'formdata'
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
-    firstname = db.Column(db.String, nullable=False)
-    email = db.Column(db.String)
+    firstname = db.Column(db.String(length=50), nullable=False)
+    email = db.Column(db.String(length=50))
     age = db.Column(db.Integer)
     income = db.Column(db.Integer)
     satisfaction = db.Column(db.Integer)
