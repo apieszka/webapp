@@ -49,12 +49,13 @@ body {
     padding: 0 15px;
 }
 
-label.question {
-    display: inline !important;
-}
-
 hr {
     border: 0;
     border-top: 1px solid #fffefe;
     margin: 5px 0;
+}
+
+label {
+    display: inline !important;
+    margin-bottom: .5rem;
 }
