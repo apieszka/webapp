@@ -37,7 +37,7 @@
         <option value="Kobieta">Kobieta</option>
         <option value="Mężczyzna">Mężczyzna</option>
         <option value="Inna">Inna</option>
-        <option value="Wolę nie odpowiadać">Wolę nie odpowiadać</option>
+        <option value="Odmowa odpowiedzi">Wolę nie odpowiadać</option>
       </select>
     </div>
     
@@ -119,64 +119,46 @@
     <div class="form-group">
         <label class="required" for="poziom">Poziom wykształcenia:</label>
         <select class="form-control" id="poziom" name="poziom" onchange="EdSelectCheck(this);">
-        <option value="" disabled selected hidden>Wybierz poziom wykształcenia...</option>
-        <option value="Podstawowe">Podstawowe</option>
-        <option value="Gimnaazjalne">Gimnazjalne</option>
-        <option value="Zasadnicze zawodowe">Zasadnicze zawodowe</option>
-        <option value="Średnie">Średnie</option>
-        <option id="wyzsze1" value="Wyższe 1">Wyższe I-ego stopnia</option>
-        <option id="wyzsze2" value="Wyższe 2">Wyższe II-ego stopnia</option>
-        <option id="wyzsze3" value="Wyższe 3">Wyższe III-ego stopnia</option>
+            <option value="" disabled selected hidden>Wybierz poziom wykształcenia...</option>
+            <option value="Podstawowe">Podstawowe</option>
+            <option value="Gimnaazjalne">Gimnazjalne</option>
+            <option value="Zasadnicze zawodowe">Zasadnicze zawodowe</option>
+            <option value="Średnie">Średnie</option>
+            <option id="wyzsze1" value="Wyższe I">Wyższe I-ego stopnia</option>
+            <option id="wyzsze2" value="Wyższe II">Wyższe II-ego stopnia</option>
+            <option id="wyzsze3" value="Wyższe III">Wyższe III-ego stopnia</option>
         </select>
     </div>
-
     <div id="DivCheck" style= "display:none;">
         <div class="form-group">
             <label class="required" for="ed">Uczelnia:</label>
             <select class="form-control" id="ed" name="ed" onchange="UczelniaSelectCheck(this);">
-            <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
-            <option>Uniwersytet Pedagogiczny im. Komisji Edukacji w Krakowie</option>
-            <option>Szkoła Główna Gospodarstwa Wiejskiego w Warszawie</option>
-            <option>Uniwersytet Jagielloński w Krakowie</option>
-            <option>Uniwersytet Marii Curie-Skłodowskiej w Lublinie</option>
-            <option>Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie</option>
-            <option>Uniwersytet Papieski Jana Pawła II w Krakowie</option>
-            <option>Społeczna Akademia Nauk w Łodzi</option>
-            <option>Uniwersytet Warszawski</option>
-            <option>Uniwersytet im. Adama Mickiewicza w Poznaniu</option>
-            <option>Akademia WSB w Dąbrowie Górniczej</option>
-            <option>Uniwersytet Śląski w Katowicach</option>
-            <option>Uniwersytet Gdański</option>
-            <option>Uniwersytet Łódzki</option>
-            <option>Politechnika Krakowska</option>
-            <option>Uniwersytet Rolniczy w Krakowie</option>
-            <option>Akademia Ignatianum w Krakowie</option>
-            <option>Uniwersytet Opolski</option>
-            <option>Uniwersytet Ekonomiczny w Krakowie</option>
-            <option>Uniwersytet Medyczny w Łodzi</option>
-            <option id="uczelnia" value="1">Inne</option>
-        </select><br>
-        <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
+                <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
+                {% for uczelnia in lista_uczelni %}
+                <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
+                {% endfor %}
+            </select><br>
+            <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
             <select class="form-control" id="ed" name="ed">
-            <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
-            <option>Administracyjne</option>
-            <option>Artystyczne</option>
-            <option>Biologiczno-przyrodnicze</option>
-            <option>Ekonomiczne</option>
-            <option>Humanistyczne</option>
-            <option>Filologiczne</option>
-            <option>Medyczne</option>
-            <option>Pedagogiczne</option>
-            <option>Prawnicze</option>
-            <option>Psychologiczne</option>
-            <option>Społeczne</option>
-            <option>Techniczne</option>
-            <option>Turystyczno-sportowe</option>
-            <option>Wojskowe i morskie</option>
-        </select>
+                <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
+                <option>Administracyjne</option>
+                <option>Artystyczne</option>
+                <option>Biologiczno-przyrodnicze</option>
+                <option>Ekonomiczne</option>
+                <option>Humanistyczne</option>
+                <option>Filologiczne</option>
+                <option>Medyczne</option>
+                <option>Pedagogiczne</option>
+                <option>Prawnicze</option>
+                <option>Psychologiczne</option>
+                <option>Społeczne</option>
+                <option>Techniczne</option>
+                <option>Turystyczno-sportowe</option>
+                <option>Wojskowe i morskie</option>
+            </select>
         </div>
     </div>
-    
+
     <br>
     <h3>Informacje dodatkowe</h3>
 
@@ -391,4 +373,5 @@
     <button type="submit" class="btn btn-primary" style="float: right;">Prześlij formularz</button>
 </form>
 <br><br><br><br><br><br>
+
 {% endblock %}

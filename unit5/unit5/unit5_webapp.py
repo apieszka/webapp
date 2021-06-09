@@ -1,15 +1,27 @@
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import os
 import statistics
+
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
+
+class Uczelnie(db.Model):
+    __tablename__ = 'Uczelnie'
+
+    id_uczelni = db.Column(db.Integer, primary_key=True)
+    nazwa_uczelni = db.Column(db.String(100))
+
+    def __init__(self, id_uczelni, nazwa_uczelni):
+        self.id_uczelni = id_uczelni
+        self.nazwa_uczelni = nazwa_uczelni
+
 
 class Formdata(db.Model):
     __tablename__ = 'formdata'
@@ -32,6 +44,8 @@ class Formdata(db.Model):
         self.q1 = q1
         self.q2 = q2
 
+
+
 db.create_all()
 
 
@@ -41,7 +55,8 @@ def welcome():
 
 @app.route("/form")
 def show_form():
-    return render_template('form.html')
+    lista_uczelni = db.session.query(Uczelnie).all() # [(uczelnie.id_uczelni, uczelnie.nazwa_uczelni) for uczelnia in Uczelnie.query.all()]
+    return render_template('form.html', lista_uczelni=lista_uczelni)
 
 @app.route("/krok")
 def show_krok():
