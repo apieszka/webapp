@@ -44,26 +44,81 @@ class Obszary_tematyczne(db.Model):
         self.id_obszaru = id_obszaru
         self.nazwa_obszaru = nazwa_obszaru
 
-class Formdata(db.Model):
-    __tablename__ = 'formdata'
-    id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.now)
-    firstname = db.Column(db.String(length=50), nullable=False)
-    email = db.Column(db.String(length=50))
-    age = db.Column(db.Integer)
-    income = db.Column(db.Integer)
-    satisfaction = db.Column(db.Integer)
-    q1 = db.Column(db.Integer)
-    q2 = db.Column(db.Integer)
+class Odpowiedzi_wiedza_dydaktyczna(db.Model):
+    __tablename__ = 'Odpowiedzi_wiedza_dydaktyczna'
 
-    def __init__(self, firstname, email, age, income, satisfaction, q1, q2):
-        self.firstname = firstname
-        self.email = email
-        self.age = age
-        self.income = income
-        self.satisfaction = satisfaction
-        self.q1 = q1
-        self.q2 = q2
+    id_kandydata = db.Column(db.Integer, primary_key=True)
+    p1 = db.Column(db.Boolean)
+    p2 = db.Column(db.Boolean)
+    p3 = db.Column(db.Boolean)
+    p4 = db.Column(db.Boolean)
+    p5 = db.Column(db.Boolean)
+    p6 = db.Column(db.Boolean)
+    p7 = db.Column(db.Boolean)
+    p8 = db.Column(db.Boolean)
+    p9 = db.Column(db.Boolean)
+    p10 = db.Column(db.Boolean)
+    p11 = db.Column(db.Boolean)
+    p12 = db.Column(db.Boolean)
+    p13 = db.Column(db.Boolean)
+    p14 = db.Column(db.Boolean)
+    p15 = db.Column(db.Boolean)
+    p16 = db.Column(db.Boolean)
+    p17 = db.Column(db.Boolean)
+    p18 = db.Column(db.Boolean)
+
+    def __init__(self, id_kandydata, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18):
+        self.id_kandydata = id_kandydata
+        self.p1 = p1
+        self.p2 = p2
+        self.p3 = p3
+        self.p4 = p4
+        self.p5 = p5
+        self.p6 = p6
+        self.p7 = p7
+        self.p8 = p8
+        self.p9 = p9
+        self.p10 = p10
+        self.p11 = p11
+        self.p12 = p12
+        self.p13 = p13
+        self.p14 = p14
+        self.p15 = p15
+        self.p16 = p16
+        self.p17 = p17
+        self.p18 = p18
+
+class Odpowiedzi_umiejętności_miękkie(db.Model):
+    __tablename__ = 'Odpowiedzi_umiejętności_miękkie'
+
+    id_kandydata = db.Column(db.Integer, primary_key=True)
+    p1 = db.Column(db.Boolean)
+    p2 = db.Column(db.Boolean)
+    p3 = db.Column(db.Boolean)
+    p4 = db.Column(db.Boolean)
+    p5 = db.Column(db.Boolean)
+    p6 = db.Column(db.Boolean)
+    p7 = db.Column(db.Boolean)
+    p8 = db.Column(db.Boolean)
+    p9 = db.Column(db.Boolean)
+    p10 = db.Column(db.Boolean)
+    p11 = db.Column(db.Boolean)
+    p12 = db.Column(db.Boolean)
+
+    def __init__(self, id_kandydata, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12):
+        self.id_kandydata = id_kandydata
+        self.p1 = p1
+        self.p2 = p2
+        self.p3 = p3
+        self.p4 = p4
+        self.p5 = p5
+        self.p6 = p6
+        self.p7 = p7
+        self.p8 = p8
+        self.p9 = p9
+        self.p10 = p10
+        self.p11 = p11
+        self.p12 = p12
 
 class Kandydaci(db.Model):
     __tablename__ = 'Kandydaci'
@@ -175,8 +230,50 @@ def save():
     id_wojewodztwa = request.form.get('woj')
 
     # Save the data
-    fd = Kandydaci(id_kandydata, wiek, płeć, adres_email, poziom_wykształcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa)
-    db.session.add(fd)
+    k = Kandydaci(id_kandydata, wiek, płeć, adres_email, poziom_wykształcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa)
+    db.session.add(k)
+    db.session.commit()
+
+    owd_p1 = request.form.get('question1')
+    owd_p2 = request.form.get('question2')
+    owd_p3 = request.form.get('question3')
+    owd_p4 = request.form.get('question4')
+    owd_p5 = request.form.get('question5')
+    owd_p6 = request.form.get('question6')
+    owd_p7 = request.form.get('question7')
+    owd_p8 = request.form.get('question8')
+    owd_p9 = request.form.get('question9')
+    owd_p10 = request.form.get('question10')
+    owd_p11 = request.form.get('question11')
+    owd_p12 = request.form.get('question12')
+    owd_p13 = request.form.get('question13')
+    owd_p14 = request.form.get('question14')
+    owd_p15 = request.form.get('question15')
+    owd_p16 = request.form.get('question16')
+    owd_p17 = request.form.get('question17')
+    owd_p18 = request.form.get('question18')
+
+    owd = Odpowiedzi_wiedza_dydaktyczna(id_kandydata, owd_p1, owd_p2, owd_p3, owd_p4, owd_p5, owd_p6, owd_p7, owd_p8,
+                                        owd_p9, owd_p10, owd_p11, owd_p12, owd_p13, owd_p14, owd_p15, owd_p16, owd_p17, owd_p18)
+    db.session.add(owd)
+    db.session.commit()
+
+    oum_p1 = request.form.get('question1m')
+    oum_p2 = request.form.get('question2m')
+    oum_p3 = request.form.get('question3m')
+    oum_p4 = request.form.get('question4m')
+    oum_p5 = request.form.get('question5m')
+    oum_p6 = request.form.get('question6m')
+    oum_p7 = request.form.get('question7m')
+    oum_p8 = request.form.get('question8m')
+    oum_p9 = request.form.get('question9m')
+    oum_p10 = request.form.get('question10m')
+    oum_p11 = request.form.get('question11m')
+    oum_p12 = request.form.get('question12m')
+
+    oum = Odpowiedzi_wiedza_dydaktyczna(id_kandydata, oum_p1, oum_p2, oum_p3, oum_p4, oum_p5, oum_p6, oum_p7, oum_p8,
+                                        oum_p9, oum_p10, oum_p11, oum_p12)
+    db.session.add(oum)
     db.session.commit()
 
     return redirect('/')
