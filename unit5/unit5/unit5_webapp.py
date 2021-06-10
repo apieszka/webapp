@@ -78,9 +78,10 @@ class Kandydaci(db.Model):
     id_wojewodztwa = db.Column(db.Integer)
     data_dodania = db.Column(db.TIMESTAMP, default=db.func.now())
 
-    def __init__(self, id_kandydata, wiek, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa):
+    def __init__(self, id_kandydata, wiek, płeć, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa):
         self.id_kandydata = id_kandydata
         self.wiek = wiek
+        self.płeć = płeć
         self.adres_email = adres_email
         self.poziom_wyksztalcenia = poziom_wyksztalcenia
         self.id_uczelni = id_uczelni
