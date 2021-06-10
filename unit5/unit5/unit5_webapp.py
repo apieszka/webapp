@@ -64,7 +64,28 @@ class Formdata(db.Model):
         self.q1 = q1
         self.q2 = q2
 
+class Kandydaci(db.Model):
+    __tablename__ = 'Kandydaci'
+    id_kandydata = db.Column(db.Integer, primary_key=True)
+    wiek = db.Column(db.String(15))
+    płeć = db.Column(db.String(20))
+    adres_email = db.Column(db.String(100))
+    poziom_wyksztalcenia = db.Column(db.String(25))
+    id_uczelni = db.Column(db.Integer)
+    id_obszaru = db.Column(db.Integer)
+    sytuacja_zawodowa = db.Column(db.String(20))
+    id_wojewodztwa = db.Column(db.Integer)
+    data_dodania = db.Column(db.Timestamp, default=db.func.now())
 
+    def __init__(self, id_kandydata, wiek, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa):
+        self.id_kandydata = id_kandydata
+        self.wiek = wiek
+        self.adres_email = adres_email
+        self.poziom_wyksztalcenia = poziom_wyksztalcenia
+        self.id_uczelni = id_uczelni
+        self.id_obszaru = id_obszaru
+        self.sytuacja_zawodowa = sytuacja_zawodowa
+        self.id_wojewodztwa = id_wojewodztwa
 
 db.create_all()
 
@@ -139,17 +160,20 @@ def show_result():
 
 @app.route("/save", methods=['POST'])
 def save():
-    # Get data from FORM
-    firstname = request.form.get('firstname')
-    email = request.form.get('email')
-    age = request.form.get('age')
-    income = request.form.get('income')
-    satisfaction = request.form.get('satisfaction')
-    q1 = request.form.get('q1')
-    q2 = request.form.get('q2')
+    max_id = session.query(func.max(Kandydaci.id_kandydata)).scalar()
+
+    id_kandydata = max_id + 1
+    wiek = request.form.get('wiek')
+    płeć = request.form.get('płeć')
+    adres_email = request.form.get('email')
+    poziom_wyksztalcenia = request.form.get('poziom')
+    id_uczelni = request.form.get('uczelnia')
+    id_obszaru = request.form.get('obszar')
+    sytuacja_zawodowa = request.form.get('work')
+    id_wojewodztwa = request.form.get('woj')
 
     # Save the data
-    fd = Formdata(firstname, email, age, income, satisfaction, q1, q2)
+    fd = Kandydaci(id_kandydata, wiek, płeć, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa)
     db.session.add(fd)
     db.session.commit()
 

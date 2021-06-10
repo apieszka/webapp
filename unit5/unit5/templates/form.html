@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <label class="required" for="sex">Płeć:</label>
-        <select class="form-control" id="sex" name="sex">
+        <select class="form-control" id="płeć" name="płeć">
         <option value="" disabled selected hidden>Wybierz płeć...</option>
         <option value="Kobieta">Kobieta</option>
         <option value="Mężczyzna">Mężczyzna</option>
@@ -119,16 +119,16 @@
     <div id="DivCheck" style= "display:none;">
         <div class="form-group">
             <label class="required" for="ed">Uczelnia:</label>
-            <select class="form-control" id="ed" name="ed" onchange="UczelniaSelectCheck(this);">
+            <select class="form-control" id="uczelnia" name="ed" onchange="UczelniaSelectCheck(this);">
                 <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
                 {% for uczelnia in lista_uczelni if (uczelnia.id_uczelni != -1) %}
                 <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
                 {% endfor %}
             </select><br>
             <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
-            <select class="form-control" id="ed" name="ed">
+            <select class="form-control" id="obszar" name="ed">
                 <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
-                {% for obszar in lista_obszarow %}
+                {% for obszar in lista_obszarow (obszar.id_obszaru != -1)%}
                 <option value="{{ obszar.id_obszaru }}">{{ obszar.nazwa_obszaru }}</option>
                 {% endfor %}
             </select>
@@ -159,9 +159,9 @@
         <label class="required" for="work">Sytuacja zawodowa:</label>
         <select class="form-control" id="work" name="work">
         <option value="" disabled selected hidden>Wybierz swoją sytuację zawodową...</option>
-        <option>Bezrobotny</option>
-        <option>Uczeń/student</option>
-        <option>Emeryt/rencista</option>
+        <option value="Bezrobotny">Bezrobotny</option>
+        <option value="Uczeń/student">Uczeń/student</option>
+        <option value="Emeryt/rencista">Emeryt/rencista</option>
       </select>
     </div>
 
