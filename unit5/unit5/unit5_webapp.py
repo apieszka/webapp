@@ -7,8 +7,8 @@ import os
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
@@ -23,6 +23,15 @@ class Uczelnie(db.Model):
         self.id_uczelni = id_uczelni
         self.nazwa_uczelni = nazwa_uczelni
 
+class Wojewodztwa(db.Model):
+    __tablename__ = 'Wojewodztwa'
+
+    id_wojewodztwa = db.Column(db.Integer, primary_key=True)
+    nazwa_wojewodztwa = db.Column(db.String(25))
+
+    def __init__(self, id_wojewodztwa, nazwa_wojewodztwa):
+        self.id_wojewodztwa = id_wojewodztwa
+        self.nazwa_wojewodztwa = nazwa_wojewodztwa
 
 class Formdata(db.Model):
     __tablename__ = 'formdata'
@@ -56,8 +65,9 @@ def welcome():
 
 @app.route("/form")
 def show_form():
-    lista_uczelni = db.session.query(Uczelnie).all() # [(uczelnie.id_uczelni, uczelnie.nazwa_uczelni) for uczelnia in Uczelnie.query.all()]
-    return render_template('form.html', lista_uczelni=lista_uczelni)
+    lista_wojewodztw = db.session.query(Wojewodztwa).all()
+    lista_uczelni = db.session.query(Uczelnie).all()
+    return render_template('form.html', lista_uczelni=lista_uczelni, lista_wojewodztw=lista_wojewodztw)
 
 @app.route("/krok")
 def show_krok():
