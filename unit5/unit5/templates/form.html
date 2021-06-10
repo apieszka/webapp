@@ -128,20 +128,9 @@
             <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
             <select class="form-control" id="ed" name="ed">
                 <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
-                <option>Administracyjne</option>
-                <option>Artystyczne</option>
-                <option>Biologiczno-przyrodnicze</option>
-                <option>Ekonomiczne</option>
-                <option>Humanistyczne</option>
-                <option>Filologiczne</option>
-                <option>Medyczne</option>
-                <option>Pedagogiczne</option>
-                <option>Prawnicze</option>
-                <option>Psychologiczne</option>
-                <option>Społeczne</option>
-                <option>Techniczne</option>
-                <option>Turystyczno-sportowe</option>
-                <option>Wojskowe i morskie</option>
+                {% for obszar in lista_obszarow %}
+                <option value="{{ obszar.id_obszaru }}">{{ obszar.nazwa_obszaru }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>

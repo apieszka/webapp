@@ -33,6 +33,16 @@ class Wojewodztwa(db.Model):
         self.id_wojewodztwa = id_wojewodztwa
         self.nazwa_wojewodztwa = nazwa_wojewodztwa
 
+class Obszary_tematyczne(db.Model):
+    __tablename__ = 'Obszary_tematyczne'
+
+    id_obszaru = db.Column(db.Integer, primary_key=True)
+    nazwa_obszaru = db.Column(db.String(25))
+
+    def __init__(self, id_obszaru, nazwa_obszaru):
+        self.id_obszaru = id_obszaru
+        self.nazwa_obszaru = nazwa_obszaru
+
 class Formdata(db.Model):
     __tablename__ = 'formdata'
     id = db.Column(db.Integer, primary_key=True)
@@ -67,7 +77,8 @@ def welcome():
 def show_form():
     lista_wojewodztw = db.session.query(Wojewodztwa).all()
     lista_uczelni = db.session.query(Uczelnie).all()
-    return render_template('form.html', lista_uczelni=lista_uczelni, lista_wojewodztw=lista_wojewodztw)
+    lista_obszarow = db.session.query(Obszary_tematyczne).all()
+    return render_template('form.html', lista_uczelni=lista_uczelni, lista_wojewodztw=lista_wojewodztw, lista_obszarow=lista_obszarow)
 
 @app.route("/krok")
 def show_krok():
