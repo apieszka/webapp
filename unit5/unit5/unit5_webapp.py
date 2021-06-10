@@ -271,7 +271,7 @@ def save():
     oum_p11 = request.form.get('question11m')
     oum_p12 = request.form.get('question12m')
 
-    oum = Odpowiedzi_wiedza_dydaktyczna(id_kandydata, oum_p1, oum_p2, oum_p3, oum_p4, oum_p5, oum_p6, oum_p7, oum_p8,
+    oum = Odpowiedzi_umiejętności_miękkie(id_kandydata, oum_p1, oum_p2, oum_p3, oum_p4, oum_p5, oum_p6, oum_p7, oum_p8,
                                         oum_p9, oum_p10, oum_p11, oum_p12)
     db.session.add(oum)
     db.session.commit()
