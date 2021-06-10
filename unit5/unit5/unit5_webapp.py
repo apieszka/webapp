@@ -160,7 +160,7 @@ def show_result():
 
 @app.route("/save", methods=['POST'])
 def save():
-    max_id = session.query(func.max(Kandydaci.id_kandydata)).scalar()
+    max_id = db.session.query(func.max(Kandydaci.id_kandydata)).scalar()
 
     id_kandydata = max_id + 1
     wiek = request.form.get('wiek')
