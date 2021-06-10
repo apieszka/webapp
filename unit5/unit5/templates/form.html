@@ -108,12 +108,12 @@
         <select class="form-control" id="poziom" name="poziom" onchange="EdSelectCheck(this);">
             <option value="" disabled selected hidden>Wybierz poziom wykształcenia...</option>
             <option value="Podstawowe">Podstawowe</option>
-            <option value="Gimnaazjalne">Gimnazjalne</option>
+            <option value="Gimnazjalne">Gimnazjalne</option>
             <option value="Zasadnicze zawodowe">Zasadnicze zawodowe</option>
             <option value="Średnie">Średnie</option>
-            <option id="wyzsze1" value="Wyższe I">Wyższe I-ego stopnia</option>
-            <option id="wyzsze2" value="Wyższe II">Wyższe II-ego stopnia</option>
-            <option id="wyzsze3" value="Wyższe III">Wyższe III-ego stopnia</option>
+            <option id="Wyzsze I" value="Wyższe I">Wyższe I-ego stopnia</option>
+            <option id="Wyzsze II" value="Wyższe II">Wyższe II-ego stopnia</option>
+            <option id="Wyzsze III" value="Wyższe III">Wyższe III-ego stopnia</option>
         </select>
     </div>
     <div id="DivCheck" style= "display:none;">
@@ -121,7 +121,7 @@
             <label class="required" for="ed">Uczelnia:</label>
             <select class="form-control" id="ed" name="ed" onchange="UczelniaSelectCheck(this);">
                 <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
-                {% for uczelnia in lista_uczelni %}
+                {% for uczelnia in lista_uczelni if (uczelnia.id_uczelni > -1) %}
                 <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
                 {% endfor %}
             </select><br>
