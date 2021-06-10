@@ -121,7 +121,7 @@
             <label class="required" for="ed">Uczelnia:</label>
             <select class="form-control" id="ed" name="ed" onchange="UczelniaSelectCheck(this);">
                 <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
-                {% for uczelnia in lista_uczelni%}
+                {% for uczelnia in lista_uczelni if (uczelnia.id_uczelni > -1) %}
                 <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
                 {% endfor %}
             </select><br>
