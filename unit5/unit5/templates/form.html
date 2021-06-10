@@ -113,20 +113,20 @@
             <option value="Średnie">Średnie</option>
             <option id="Wyzsze1" value="Wyższe I">Wyższe I-ego stopnia</option>
             <option id="Wyzsze2" value="Wyższe II">Wyższe II-ego stopnia</option>
-            <option id="Wyzsze3" value="Wyższe III">Wyższe III-ego stopnia</option>
+            <option id="Wyzsze3" value="Wyższe III">Wyższe IIIego stopnia</option>
         </select>
     </div>
     <div id="DivCheck" style= "display:none;">
         <div class="form-group">
             <label class="required" for="ed">Uczelnia:</label>
-            <select class="form-control" id="uczelnia" name="ed" onchange="UczelniaSelectCheck(this);">
+            <select class="form-control" id="uczelnia" name="uczelnia" onchange="UczelniaSelectCheck(this);">
                 <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
                 {% for uczelnia in lista_uczelni if (uczelnia.id_uczelni != -1) %}
                 <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
                 {% endfor %}
             </select><br>
             <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
-            <select class="form-control" id="obszar" name="ed">
+            <select class="form-control" id="obszar" name="obszar">
                 <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
                 {% for obszar in lista_obszarow if (obszar.id_obszaru != -1) %}
                 <option value="{{ obszar.id_obszaru }}">{{ obszar.nazwa_obszaru }}</option>

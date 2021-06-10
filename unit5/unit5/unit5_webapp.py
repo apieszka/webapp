@@ -71,19 +71,19 @@ class Kandydaci(db.Model):
     wiek = db.Column(db.String(15))
     płeć = db.Column(db.String(20))
     adres_email = db.Column(db.String(100))
-    poziom_wyksztalcenia = db.Column(db.String(25))
+    poziom_wykształcenia = db.Column(db.String(25))
     id_uczelni = db.Column(db.Integer)
     id_obszaru = db.Column(db.Integer)
     sytuacja_zawodowa = db.Column(db.String(20))
     id_wojewodztwa = db.Column(db.Integer)
     data_dodania = db.Column(db.TIMESTAMP, default=db.func.now())
 
-    def __init__(self, id_kandydata, wiek, płeć, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa):
+    def __init__(self, id_kandydata, wiek, płeć, adres_email, poziom_wykształcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa):
         self.id_kandydata = id_kandydata
         self.wiek = wiek
         self.płeć = płeć
         self.adres_email = adres_email
-        self.poziom_wyksztalcenia = poziom_wyksztalcenia
+        self.poziom_wykształcenia = poziom_wykształcenia
         self.id_uczelni = id_uczelni
         self.id_obszaru = id_obszaru
         self.sytuacja_zawodowa = sytuacja_zawodowa
@@ -168,14 +168,14 @@ def save():
     wiek = request.form.get('wiek')
     płeć = request.form.get('płeć')
     adres_email = request.form.get('email')
-    poziom_wyksztalcenia = request.form.get('poziom')
+    poziom_wykształcenia = request.form.get('poziom')
     id_uczelni = request.form.get('uczelnia')
     id_obszaru = request.form.get('obszar')
     sytuacja_zawodowa = request.form.get('work')
     id_wojewodztwa = request.form.get('woj')
 
     # Save the data
-    fd = Kandydaci(id_kandydata, wiek, płeć, adres_email, poziom_wyksztalcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa)
+    fd = Kandydaci(id_kandydata, wiek, płeć, adres_email, poziom_wykształcenia, id_uczelni, id_obszaru, sytuacja_zawodowa, id_wojewodztwa)
     db.session.add(fd)
     db.session.commit()
 
