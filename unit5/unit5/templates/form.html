@@ -128,7 +128,7 @@
             <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
             <select class="form-control" id="obszar" name="ed">
                 <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
-                {% for obszar in lista_obszarow (obszar.id_obszaru != -1)%}
+                {% for obszar in lista_obszarow if (obszar.id_obszaru != -1) %}
                 <option value="{{ obszar.id_obszaru }}">{{ obszar.nazwa_obszaru }}</option>
                 {% endfor %}
             </select>
