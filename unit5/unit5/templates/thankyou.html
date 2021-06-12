@@ -1,0 +1,15 @@
+<!-- extend base layout -->
+{% extends "base.html" %} {% block content %}
+
+<div class="jumbotron">
+    <h2 class="display-4">Dziękujemy za wypełnienie formularza!</h2>
+    <hr class="my-4">
+    <h3>Twoje wyniki:</h3>
+    <p>Wiedza dydaktyczna: {{ owd_points|pprint }}/18 puntków<br>Umiejętności miękkie: {{ oum_points|pprint }}/12 punktów</p>
+    <p>Gratulacje!</p>
+</div>
+<p>
+    <a class="btn btn-primary" href="/" role="button">Powrót do strony głównej</a>
+</p>
+
+{% endblock %}

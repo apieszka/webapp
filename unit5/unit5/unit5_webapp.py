@@ -8,8 +8,8 @@ import os
 
 app = Flask(__name__, static_url_path='/static')
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
@@ -253,6 +253,12 @@ def save():
     owd_p17 = request.form.get('question17')
     owd_p18 = request.form.get('question18')
 
+    owd_points = 0
+    for p in [owd_p1, owd_p2, owd_p3, owd_p4, owd_p5, owd_p6, owd_p7, owd_p8,
+                                        owd_p9, owd_p10, owd_p11, owd_p12, owd_p13, owd_p14, owd_p15, owd_p16, owd_p17, owd_p18]:
+        owd_points = owd_points + int(p)
+
+
     owd = Odpowiedzi_wiedza_dydaktyczna(id_kandydata, owd_p1, owd_p2, owd_p3, owd_p4, owd_p5, owd_p6, owd_p7, owd_p8,
                                         owd_p9, owd_p10, owd_p11, owd_p12, owd_p13, owd_p14, owd_p15, owd_p16, owd_p17, owd_p18)
     db.session.add(owd)
@@ -271,12 +277,17 @@ def save():
     oum_p11 = request.form.get('question11m')
     oum_p12 = request.form.get('question12m')
 
+    oum_points = 0
+    for p in [oum_p1, oum_p2, oum_p3, oum_p4, oum_p5, oum_p6, oum_p7, oum_p8,
+                                        oum_p9, oum_p10, oum_p11, oum_p12]:
+        oum_points = oum_points + int(p)
+
     oum = Odpowiedzi_umiejętności_miękkie(id_kandydata, oum_p1, oum_p2, oum_p3, oum_p4, oum_p5, oum_p6, oum_p7, oum_p8,
                                         oum_p9, oum_p10, oum_p11, oum_p12)
     db.session.add(oum)
     db.session.commit()
 
-    return redirect('/')
+    return render_template('thankyou.html', owd_points=owd_points, oum_points=oum_points)
 
 
 if __name__ == "__main__":
