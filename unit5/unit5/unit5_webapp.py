@@ -7,8 +7,6 @@ import os
 
 
 app = Flask(__name__, static_url_path='/static')
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://schneid2:C3sF3RzTsmtnpdJY@mysql.agh.edu.pl:3306/schneid2'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
@@ -162,64 +160,19 @@ def show_form():
 def show_krok():
     return render_template('krok.html')
 
-@app.route("/raw")
-def show_raw():
-    fd = db.session.query(Formdata).all()
-    return render_template('raw.html', formdata=fd)
-
-# @app.route("/raw")
-# def show_raw():
-#     fd = db.session.query(Formdata).all()
-#     return render_template('raw.html', formdata=fd)
-
 @app.route("/faq")
 def show_faq():
     # fd = db.session.query(Formdata).all()
     return render_template('faq.html')
 
-@app.route("/test")
-def show_test():
-    return render_template('form_test.html')
-
-@app.route("/result")
-def show_result():
-    fd_list = db.session.query(Formdata).all()
-
-    # Some simple statistics for sample questions
-    satisfaction = []
-    q1 = []
-    q2 = []
-    for el in fd_list:
-        satisfaction.append(int(el.satisfaction))
-        q1.append(int(el.q1))
-        q2.append(int(el.q2))
-
-    if len(satisfaction) > 0:
-        mean_satisfaction = statistics.mean(satisfaction)
-    else:
-        mean_satisfaction = 0
-
-    if len(q1) > 0:
-        mean_q1 = statistics.mean(q1)
-    else:
-        mean_q1 = 0
-
-    if len(q2) > 0:
-        mean_q2 = statistics.mean(q2)
-    else:
-        mean_q2 = 0
-
-    # Prepare data for google charts
-    data = [['Satisfaction', mean_satisfaction], ['Python skill', mean_q1], ['Flask skill', mean_q2]]
-
-    return render_template('result.html', data=data)
-
-
 @app.route("/save", methods=['POST'])
 def save():
     max_id = db.session.query(func.max(Kandydaci.id_kandydata)).scalar()
+    if max_id is not None:
+        id_kandydata = max_id + 1
+    else:
+        id_kandydata = 1
 
-    id_kandydata = max_id + 1
     wiek = request.form.get('wiek')
     płeć = request.form.get('płeć')
     adres_email = request.form.get('email')
