@@ -104,7 +104,8 @@
     <br>
     <h3>Wykształcenie</h3>
     <div class="form-group">
-        <label class="required" for="poziom">Poziom wykształcenia:</label>
+        <label class="required" for="poziom"><b>Poziom wykształcenia:</b></label><br>
+            Jeśli jeszcze się uczysz, zaznacz etap edukacji, na którym jesteś, a jeśli skończyłeś/aś edukację, zaznacz najwyższy ukończony stopień.<br>
         <select class="form-control" id="poziom" name="poziom" onchange="EdSelectCheck(this);" required>
             <option value="" disabled selected hidden>Wybierz poziom wykształcenia...</option>
             <option value="Podstawowe">Podstawowe</option>
@@ -156,12 +157,14 @@
     <br> -->
 
     <div class="form-group">
-        <label for="work">Sytuacja zawodowa:</label>
+        <label for="work"><b>Sytuacja zawodowa:</b></label>
+        <br> To pole nie jest wymagane - jesli żadna z opcji cię nie dotyczy, pozostaw pole puste, lub wybierz opcję "żadne z wymienionych" i przejdź dalej.<br>
         <select class="form-control" id="work" name="work">
-        <option value="" disabled selected hidden>Wybierz jeśli dotyczy Cię któraś z opcji...</option>
-        <option value="Bezrobotny">Bezrobotny</option>
-        <option value="Uczeń/student">Uczeń/student</option>
-        <option value="Emeryt/rencista">Emeryt/rencista</option>
+            <option value="" disabled selected hidden>Wybierz jeśli dotyczy Cię któraś z opcji...</option>
+            <option value="Bezrobotny">Bezrobotny</option>
+            <option value="Uczeń/student">Uczeń/student</option>
+            <option value="Emeryt/rencista">Emeryt/rencista</option>
+            <option value="">Żadne z wymienionych</option>
       </select>
     </div>
 
@@ -190,8 +193,8 @@
             </li>
             <li> Wideodydaktyka to: <br><br>
                 <input type="radio" id="question5a" name="question5" value="0" required/> <label for="question5a"> Nazwa grupy metod nauczania wykorzystujących filmy takich jak, kierowanie obserwacją, pokaz itp. </label><br>
-                <input type="radio" id="question5b" name="question5" value="1" /> <label for="question5b"> Metoda, w której nagrywają filmy. </label><br>
-                <input type="radio" id="question5c" name="question5" value="0" /> <label for="question5c"> Metoda, w której tylko oglądają filmy. </label><br><br>
+                <input type="radio" id="question5b" name="question5" value="1" /> <label for="question5b"> Metoda, w której uczniowie nagrywają filmy. </label><br>
+                <input type="radio" id="question5c" name="question5" value="0" /> <label for="question5c"> Metoda, w której uczniowie tylko oglądają filmy. </label><br><br>
             </li>
             <li> W zdalnym nauczaniu: <br><br>
                 <input type="radio" id="question6a" name="question6" value="1" required/> <label for="question6a"> Ocena powinna informować ucznia o jego odległości od założonego celu nauczania. </label><br>
@@ -208,7 +211,7 @@
                 <input type="radio" id="question8b" name="question8" value="0" /> <label for="question8b"> Na początku powiedzieć temat zajęć, podać zagadnienia. </label><br>
                 <input type="radio" id="question8c" name="question8" value="0" /> <label for="question8c"> Kłaść nacisk na punktualność uczniów. </label><br><br>
             </li>
-            <li> Jeśli uczniowie wykonując pracę wytwórczą potrafią podać podstawy teoretyczne działania, to spełniona zasada: <br><br>
+            <li> Jeśli uczniowie wykonując pracę wytwórczą potrafią podać podstawy teoretyczne działania, to spełniona jest zasada: <br><br>
                 <input type="radio" id="question9a" name="question9" value="0" required/> <label for="question9a"> Ustawiczności kształcenia. </label><br>
                 <input type="radio" id="question9b" name="question9" value="1" /> <label for="question9b"> Świadomego i aktywnego uczestnictwa. </label><br>
                 <input type="radio" id="question9c" name="question9" value="0" /> <label for="question9c"> Przystępności kształcenia. </label><br><br>
