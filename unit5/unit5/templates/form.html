@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label class="required" for="date">Wiek:</label>
-        <select class="form-control" id="wiek" name="wiek">
+        <select class="form-control" id="wiek" name="wiek" required>
             <option value="" disabled selected hidden>Wybierz swoją grupę wiekową...</option>
             <option value="mniej niż 18">mniej niż 18</option>
             <option value="18-21">18-21</option>
@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <label class="required" for="sex">Płeć:</label>
-        <select class="form-control" id="płeć" name="płeć">
+        <select class="form-control" id="płeć" name="płeć" required>
         <option value="" disabled selected hidden>Wybierz płeć...</option>
         <option value="Kobieta">Kobieta</option>
         <option value="Mężczyzna">Mężczyzna</option>
@@ -43,7 +43,7 @@
     
     <div class="form-group">
         <label class="required" for="woj">Województwo:</label>
-        <select class="form-control" id="woj" name="woj">
+        <select class="form-control" id="woj" name="woj" required>
             <option value="" disabled selected hidden>Wybierz województwo...</option>
                 {% for wojewodztwo in lista_wojewodztw %}
                 <option value="{{ wojewodztwo.id_wojewodztwa }}">{{ wojewodztwo.nazwa_wojewodztwa }}</option>
@@ -105,7 +105,7 @@
     <h3>Wykształcenie</h3>
     <div class="form-group">
         <label class="required" for="poziom">Poziom wykształcenia:</label>
-        <select class="form-control" id="poziom" name="poziom" onchange="EdSelectCheck(this);">
+        <select class="form-control" id="poziom" name="poziom" onchange="EdSelectCheck(this);" required>
             <option value="" disabled selected hidden>Wybierz poziom wykształcenia...</option>
             <option value="Podstawowe">Podstawowe</option>
             <option value="Gimnazjalne">Gimnazjalne</option>
@@ -119,14 +119,14 @@
     <div id="DivCheck" style= "display:none;">
         <div class="form-group">
             <label class="required" for="ed">Uczelnia:</label>
-            <select class="form-control" id="uczelnia" name="uczelnia" onchange="UczelniaSelectCheck(this);">
+            <select class="form-control" id="uczelnia" name="uczelnia" onchange="UczelniaSelectCheck(this);" required>
                 <option value="" disabled selected hidden>Wybierz swoją uczelnię...</option>
                 {% for uczelnia in lista_uczelni if (uczelnia.id_uczelni != -1) %}
                 <option value="{{ uczelnia.id_uczelni }}">{{ uczelnia.nazwa_uczelni }}</option>
                 {% endfor %}
             </select><br>
             <label class="required" for="ed">Obszar tematyczny kierunku studiów:</label>
-            <select class="form-control" id="obszar" name="obszar">
+            <select class="form-control" id="obszar" name="obszar" required>
                 <option value="" disabled selected hidden>Wybierz obszar tematyczny kierunku...</option>
                 {% for obszar in lista_obszarow if (obszar.id_obszaru != -1) %}
                 <option value="{{ obszar.id_obszaru }}">{{ obszar.nazwa_obszaru }}</option>
